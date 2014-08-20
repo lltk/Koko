@@ -14,6 +14,8 @@ config['version'] = __version__
 app = Flask(config['name'])
 cache = Cache(app ,config = {'CACHE_TYPE': 'simple'})
 
+from views import *
+
 if __name__ == '__main__':
 
 	if config['debug']:
