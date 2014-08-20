@@ -6,11 +6,13 @@ __author_email__ = 'email@markus-beuckelmann.de'
 __version__ = '0.0.1'
 
 from flask import Flask
+from flask.ext.cache import Cache
 
 from config import config
 config['version'] = __version__
 
 app = Flask(config['name'])
+cache = Cache(app ,config = {'CACHE_TYPE': 'simple'})
 
 if __name__ == '__main__':
 
