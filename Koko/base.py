@@ -5,21 +5,19 @@ __author__ = 'Markus Beuckelmann'
 __author_email__ = 'email@markus-beuckelmann.de'
 __version__ = '0.0.1'
 
-DEBUG = True
-HOST = '127.0.0.1'
-PORT = 5002
-NAME = 'Koko'
-
 from flask import Flask
 
-app = Flask(NAME)
+from config import config
+config['version'] = __version__
+
+app = Flask(config['name'])
 
 if __name__ == '__main__':
 
-	if DEBUG:
+	if config['debug']:
 
 		# Run the development server if debug mode is on
-		app.run(debug = True , host = HOST, port = PORT);
+		app.run(debug = True, host = config['host'], port = config['port']);
 	else:
 
 		try:
@@ -31,8 +29,8 @@ if __name__ == '__main__':
 
 			enable_pretty_logging()
 			http_server = HTTPServer(WSGIContainer(app))
-			http_server.listen(PORT, HOST)
+			http_server.listen(config['port'], config['host'])
 			IOLoop.instance().start()
 
 		except ImportError:
-			app.run(debug = False, host = HOST, port = PORT);
+			app.run(debug = False, host = config['host'], port = config['port']);
