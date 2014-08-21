@@ -1,0 +1,21 @@
+
+<html>
+	<head>
+		<title>Koko: Language Learning for primates.</title>
+		<script type="text/javascript" src="/static/js/jquery.min.js"></script>
+		<script type="text/javascript" src="/static/js/jquery.cookie.js"></script>
+		<script type="text/javascript" src="/static/js/jquery.jeditable.js"></script>
+		<script type="text/javascript" src="/static/js/async.js"></script>
+		<script type="text/javascript" src="/static/js/koko.js"></script>
+		{% block jsextra %} {% endblock %}
+		<link rel="stylesheet" href="/static/css/buttons.css" type="text/css" media="screen">
+		<link rel="stylesheet" href="/static/css/style.css" type="text/css" media="screen">
+		<link rel="stylesheet" href="/static/css/anki.css" type="text/css" media="screen">
+		<link rel="stylesheet" href="/static/css/fonts.css" type="text/css" media="screen" />
+	</head>
+	<body>
+		{% block header %}{% endblock %}
+		{% block content %}{% endblock %}
+		{% block data %}{% endblock %}
+	</body>
+</html>
