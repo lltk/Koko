@@ -1,0 +1,11 @@
+/* Thanks to P.D. Magnus. Found on http://www.fontsquirrel.com/fonts/Belligerent-Madness. */
+@font-face {
+	font-family: 'Belligerent-Madness';
+	src: url('/static/fonts/belligerent-madness.eot');
+	src: url('/static/fonts/belligerent-madness.eot?#iefix') format('embedded-opentype'),
+		 url('/static/fonts/belligerent-madness.woff') format('woff'),
+		 url('/static/fonts/belligerent-madness.ttf') format('truetype'),
+		 url('/static/fonts/belligerent-madness.svg#belligerent_madnessregular') format('svg');
+	font-weight: normal;
+	font-style: normal;
+}
