@@ -1,0 +1,43 @@
+		{% extends "base.html" %}
+
+		{% block jsextra %}
+		<script type="text/javascript" src="/static/js/koko-create.js"></script>
+		{% endblock %}
+
+		{% block header %}
+		{% include 'header.html' %}
+		{% endblock %}
+
+		{% block content %}
+		<div id="content">
+			<form id="start" action="/koko/build" method="POST">
+				<div class="card">
+					<div id="select" style="text-align: center;">
+						Erstelle
+						<select id="pos">
+							<option value="NN" selected="selected">Nomen</option>
+							<option value="VB" disabled="disabled">Verben</option>
+							<option value="JJ" disabled="disabled">Adjektive</option>
+						</select>
+						in
+						<select id="language">
+							<option value="de" selected="selected">Deutsch</option>
+							<option value="en">English</option>
+							<option value="nl">Nederlands</option>
+							<option value="it">Italiano</option>
+						</select>.
+						Übersetze nach
+						<select id="translation_language">
+							<option value="de" selected="selected">Deutsch</option>
+							<option value="en">English</option>
+							<option value="nl">Nederlands</option>
+							<option value="it">Italiano</option>
+						</select>.
+					</div>
+					<textarea id="words" style="padding-top: 2em;"></textarea>
+					<input id="words" type="hidden" value="" />
+				</div>
+			</form>
+			<span id="button" onclick="start();" type="ok" class="button red bigrounded">Start</span>
+		</div>
+		{% endblock %}

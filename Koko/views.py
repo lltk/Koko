@@ -23,3 +23,9 @@ def lltk(query):
 	uri = 'http://%s:%d%s/%s%s' % (config['lltk-host'], config['lltk-port'], config['lltk-prefix'], query, parameters)
 	response = requests.get(uri)
 	return Response(response.text, status = response.status_code, content_type = response.headers['content-type'],)
+
+@app.route('/koko/create')
+def create():
+	''' Returns a page to select language, pos and input words. '''
+
+	return render_template('create.html')
