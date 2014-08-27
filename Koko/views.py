@@ -1,10 +1,12 @@
 #!/usr/bin/python
 # -*- coding: UTF-8 -*-
 
+import os
 import requests
+from urllib import urlretrieve
 from hashlib import md5
 
-from flask import request, render_template, Response
+from flask import jsonify, request, render_template, Response
 from base import app, cache
 
 @app.route('/', methods = ['GET'])
@@ -29,3 +31,52 @@ def create():
 	''' Returns a page to select language, pos and input words. '''
 
 	return render_template('create.html')
+
+@app.route('/koko/build/<string:session>', methods = ['POST'])
+def build(session):
+	''' Returns the card slider. '''
+
+	if request.form.has_key('data'):
+		data = loads(request.form['data'])
+
+	data['session'] = session
+	data['words'] = [word.strip() for word in data['words']]
+	data['wordsjs'] = '["' + '", "'.join(data['words']) + '"]'
+
+	if data['pos'].lower() == 'nn':
+		return render_template('build-nn.html', data = data)
+	elif data['pos'].lower() == 'vb':
+		return 'Coming soon.'
+	elif data['pos'].lower() == 'jj':
+		return 'Coming soon.'
+	else:
+		return 'Not Found'
+
+@app.route('/koko/audiosamples/cache/<string:session>', methods = ['GET'])
+def audiosamples(session):
+	''' Takes care of the caching of audiosamples. '''
+
+	data = request.args.to_dict()
+	if data.has_key('language') and data.has_key('word'):
+		uri = 'http://%s:%d%s/' % (config['lltk-host'], config['lltk-port'], config['lltk-prefix'])
+		uri +=  'audiosamples/' + data['language'] + '/' + data['word']
+		if data.has_key('key'):
+			uri += '?key=' + data['key']
+		response = requests.get(uri)
+
+	cachedresult = []
+	responsedata = loads(response.text)
+	if responsedata.has_key('result'):
+		for element in responsedata['result']:
+			directory = 'static/downloads/%s/cache/' % (session,)
+			if not os.path.exists(directory):
+				os.makedirs(directory)
+			path = directory + md5(element).hexdigest()
+			urlretrieve(element, path)
+			cachedresult.append('/' + path)
+	else:
+		# Something went wrong on the server side.
+		return jsonify(responsedata)
+	data['result'] = cachedresult
+
+	return jsonify(data)

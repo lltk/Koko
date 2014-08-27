@@ -1,0 +1,31 @@
+		{% extends "build.html" %}
+
+		{% block jsspecial %}
+		<script type="text/javascript" src="/static/js/koko-build-nn.js"></script>
+		{% endblock %}
+
+		{% block content %}
+		<div id="content">
+			<div id="toolbar" style="display: block;">
+				<img id="loading" style="display: none;">
+				<img id="reload-images" src="/static/images/reload.png" onclick="reloadImages(getCurrentWord());"alt="Reload images" title="Reload images" class="shake">
+				<img id="toggle-images" src="/static/images/toggle-images.png" onclick="toggleImages();"alt="Toggle image type" title="Toggle image type" class="shake">
+				<img id="toggle-sound" src="/static/images/sound-on.png" onclick="toggleSound();" alt="Toggle sound" title="Toggle sound" class="shake">
+				<img id="delete" src="/static/images/delete.svg" onclick="deleteCard(); next();" alt="Delete card" title="Delete card" class="shake">
+			</div>
+			<div id="anki" class="card">
+				<img id="preview" src="/static/images/void.jpg" alt="..." title="..." onclick="nextImage(getCurrentWord());" onerror="nextImage(getCurrentWord());"><br><br>
+				<span class="box"><span id="translation" class="editable">...</span></span><br>
+				<hr id="answer">
+				<span id="article_sg" class="editable">...</span> <span id="lemma" class="editable">...</span><span id="pl_comma">, </span><span id="article_pl" class="editable">...</span> <span id="plural" class="editable">...</span>
+				(<span id="gender" info="..." class="editable">...</span>)<br>
+				<br><img id="audiosample" onclick="nextAudiosample(getCurrentWord());" src="/static/images/audio.svg" alt="Next audiosample" title="Next audiosample" class="shake" />
+				<span class="box">IPA: /<span id="ipa" class="editable">...</span>/</span>
+				<img id="playaudio" onclick="playAudiosample(getCurrentWord());"  src="/static/images/play.svg" alt="Play audiosample" title="Play audiosample" class="shake"/><br>
+				<hr><span id="textsample" onclick="nextTextsample(getCurrentWord())" class="shake">...</span>
+			</div>
+			<span id="previous" onclick="previous();" class="arrow" style="display: block;"></span>
+			<span id="next" onclick="next();" class="arrow" style="display: block;"></span>
+			<span id="button" onclick="buttonPressed();" type="ok" class="button blue bigrounded">Okay</span>
+		</div>
+		{% endblock %}

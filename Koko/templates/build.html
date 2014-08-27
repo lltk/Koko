@@ -1,0 +1,17 @@
+		{% extends "base.html" %}
+
+		{% block jsextra %}
+		<script type="text/javascript" src="/static/js/koko-build.js"></script>
+		{% block jsspecial %} {% endblock %}
+		<script type="text/javascript">
+			var language = "{{ data.language }}";
+			var translation_language = "{{ data.translation_language }}";
+			var pos = "{{ data.pos }}";
+			var words = {{ data.wordsjs|safe }};
+			var session = "{{ data.session }}";
+		</script>
+		{% endblock %}
+
+		{% block data %}
+		<div id="data" style="display: none;"></div>
+		{% endblock %}
