@@ -3,11 +3,13 @@
 
 import os
 import requests
-from urllib import urlretrieve
+from json import loads
 from hashlib import md5
+from urllib import urlretrieve
+from shutil import rmtree
 
 from flask import jsonify, request, render_template, Response
-from base import app, cache
+from base import app, cache, config
 
 @app.route('/', methods = ['GET'])
 @app.route('/koko', methods = ['GET'])
@@ -80,3 +82,22 @@ def audiosamples(session):
 	data['result'] = cachedresult
 
 	return jsonify(data)
+
+
+@app.route('/koko/download/zip/<string:session>', methods = ['POST'])
+def download(session):
+	''' Returns the exported cards as a zip package. '''
+
+	if request.form.has_key('cards'):
+		cards = loads(request.form['cards'])
+
+	from koko import generate_zip_package
+
+	directory = config['directory-downloads'] + session
+	path = generate_zip_package(directory, session, cards)
+
+	rmtree(directory)
+
+	response = Response(open(path, 'r').read(), mimetype='application/zip')
+	response.headers['Content-Disposition'] = 'attachment; filename=%s' % (os.path.basename(path))
+	return response
