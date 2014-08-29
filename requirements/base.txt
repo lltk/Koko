@@ -1,4 +1,3 @@
 Flask
 Flask-Cache
-lltk-restful
 tornado
