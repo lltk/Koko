@@ -3,7 +3,7 @@
 
 __author__ = 'Markus Beuckelmann'
 __author_email__ = 'email@markus-beuckelmann.de'
-__version__ = '0.0.1'
+__version__ = '0.1.0'
 
 from flask import Flask
 from flask.ext.cache import Cache
