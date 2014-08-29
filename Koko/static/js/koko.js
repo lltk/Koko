@@ -1,6 +1,7 @@
 var sound = true;
 var itype = 'lineart';
 var forvokey = '';
+var number_of_preloads = 3;
 
 /* Array Remove - By John Resig (MIT Licensed) */
 Array.prototype.remove = function(from, to) {
