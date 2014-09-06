@@ -3,13 +3,15 @@ Koko
 
 Koko is a web application that uses the [Language Learning Toolkit](http://github.com/lltk/lltk) (LLTK) as a backend to allow for automatic generation of flashcards for [Anki](http://ankisrs.net/) SRS. It is based on [Flask](http://flask.pocoo.org/) and queries [LLTK-RESTful](http://github.com/lltk/lltk-restful).
 
-The name is inspired by [Koko](http://en.wikipedia.org/wiki/Koko_(gorilla)) the gorilla who learned to communicate using American Sign
-Language. Furthermore, Koko is able to understand roughly 2000 words of spoken English.
+The name is inspired by [Koko](http://en.wikipedia.org/wiki/Koko_(gorilla)) the gorilla who learned to communicate using [American Sign
+Language](http://en.wikipedia.org/wiki/American_Sign_Language) (ASL). Furthermore, Koko is able to understand roughly 2000 words of spoken English.
 
 Features
 ------------
 
 <img src="https://raw.githubusercontent.com/lltk/Koko/master/info/screenshot-01.png" />
+<img src="https://raw.githubusercontent.com/lltk/Koko/master/info/screenshot-02.png" />
+<img src="https://raw.githubusercontent.com/lltk/Koko/master/info/screenshot-03.png" />
 
 Installation
 ------------
