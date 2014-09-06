@@ -47,8 +47,10 @@ def build(session):
 
 	if data['pos'].lower() == 'nn':
 		return render_template('build-nn.html', data = data)
+
 	elif data['pos'].lower() == 'vb':
-		return 'Coming soon.'
+		return render_template('build-vb.html', data = data)
+
 	elif data['pos'].lower() == 'jj':
 		return 'Coming soon.'
 	else:
