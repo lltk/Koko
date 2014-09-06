@@ -1,0 +1,80 @@
+.card {
+	width: 75%;
+	margin: 2em auto 2em;
+	padding: 2em;
+	text-align: center;
+	font-family: Verdana;
+	font-size: 16px;
+	color: black;
+	background-color: white;
+	-webkit-box-shadow:rgba(0, 0, 0, 0.298039) 0 1px 4px, rgba(0, 0, 0, 0.0980392) 0 0 40px inset;
+	background-color:#FFFFFF;
+	background-position:initial initial;
+	background-repeat:initial initial;
+	border: 1px solid silver;
+	box-shadow:rgba(0, 0, 0, 0.298039) 0 1px 4px, rgba(0, 0, 0, 0.0980392) 0 0 40px inset;
+	border-bottom-left-radius:4px;
+	border-bottom-right-radius:4px;
+	border-top-left-radius:4px;
+	border-top-right-radius:4px;
+}
+
+.mobile .card {
+	margin: .2em auto .2em;
+	width: auto;
+}
+
+div#type {
+	width: 30em;
+}
+
+img {
+	height: 15em;
+}
+
+.mobile img {
+	width: 15em;
+}
+
+input {
+	text-align: center;
+}
+
+span#lemma {
+	font-weight: bold;
+}
+
+span#ipa {
+	font-style: italic;
+}
+
+span#gender {
+	font-weight: bold;
+}
+
+span#gender[info^='m'] {
+	color: red;
+}
+
+span#gender[info^='f'] {
+	color: blue;
+}
+
+#translation {
+	font-size: .9em;
+}
+
+span.box {
+	border: 1px solid black;
+	padding: .4em;
+}
+
+span#textsample {
+	font-style: italic;
+	cursor: pointer;
+}
+
+hr {
+	margin-top: 1em;
+	margin-bottom: 1em;
+}
