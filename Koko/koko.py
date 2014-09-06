@@ -29,10 +29,30 @@ def generate_csv(path, cards):
 			line = (card['lemma'], card['language'], card['pos'], card['article_sg'], card['article_pl'], card['plural'], card['translation'], card['ipa'], card['gender'], card['textsample'], imagefield, audiofield)
 
 		elif card['pos'].lower() == 'vb':
-			line = (card['lemma'], card['present'], card['past'], card['perfect'], card['future'], card['translation'], card['ipa'], card['textsample'])
+
+			schema = ('lemma', 'present', 'past', 'perfect', 'future', 'translation', 'ipa', 'gender', 'textsample', 'imagepath', 'audiopath')
+
+			for key in schema:
+				if not card.has_key(key):
+					card[key] = '-'
+
+			imagefield = '<img src="%s">' % (card['imagepath'],)
+			audiofield = '[sound:%s]' % (card['audiopath'],)
+
+			line = (card['lemma'], card['language'], card['pos'], card['present'], card['past'], card['perfect'], card['future'], card['translation'], card['ipa'], card['textsample'], imagefield, audiofield)
 
 		elif card['pos'].lower() == 'jj':
-			line = (card['lemma'], card['comparative'], card['superlative'], card['translation'], card['ipa'], card['textsample'])
+
+			schema = ('lemma', 'comparative', 'superlative', 'translation', 'ipa', 'gender', 'textsample', 'imagepath', 'audiopath')
+
+			for key in schema:
+				if not card.has_key(key):
+					card[key] = '-'
+
+			imagefield = '<img src="%s">' % (card['imagepath'],)
+			audiofield = '[sound:%s]' % (card['audiopath'],)
+
+			line = (card['lemma'], card['language'], card['pos'], card['comparative'], card['superlative'], card['translation'], card['ipa'], card['textsample'], imagefield, audiofield)
 
 		else:
 			line = ('',)
