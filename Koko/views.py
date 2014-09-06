@@ -52,7 +52,8 @@ def build(session):
 		return render_template('build-vb.html', data = data)
 
 	elif data['pos'].lower() == 'jj':
-		return 'Coming soon.'
+		return render_template('build-jj.html', data = data)
+
 	else:
 		return 'Not Found'
 
