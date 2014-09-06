@@ -20,11 +20,17 @@ The current release is intended for developers only. You will have to do the fol
 
 1. Download Koko and [LLTK-RESTful](http://github.com/lltk/lltk-restful) from GitHub and unpack packages.
 2. Install requirements inside virtual environment.
-3. Copy everything inside `addons/` to your Anki addon directory (`$HOME/Anki/addons/`).
+3. Copy `addons/*` to your Anki addon directory (`$HOME/Anki/addons/`). Restart Anki.
 4. Configure `config['host']` and `config['port']` in `config.py` (for both).
 5. Get your [Forvo API](http://api.forvo.com/) key and add it to `forvokey` in `koko.js`.
 6. Run `python base.py` inside virtual environment (for both).
 7. Open `http://server:port/koko` in your browser. Koko is waiting for you.
+
+Import into Anki
+------------
+
+At the end of the session, you will get a ZIP package containing all the data. If you have installed the addons correctly (see Installation), there should be three new note types: `Koko Languages (NN)`, `Koko Languages (VB)` and `Koko Languages (JJ)`.
+Unzip the ZIP package, open Anki and proceed to the import dialog. Select the `.csv` file you got from Koko, choose the correct note type (`NN` for nouns, `VB` for verbs, `JJ` for adjectives), and import everything into a deck of your choice.
 
 Requirements
 ------------
